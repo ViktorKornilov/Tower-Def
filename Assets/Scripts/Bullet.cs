@@ -5,6 +5,7 @@ public class Bullet : MonoBehaviour
 {
     public float speed = 10;
     public Transform target;
+    public int damage = 30;
 
     private void Update()
     {
@@ -18,7 +19,9 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Destroy(collision.gameObject);
+            var health = collision.gameObject.GetComponent<Health>();
+            health.Damage(damage);
+            
             Die();
         }
     }

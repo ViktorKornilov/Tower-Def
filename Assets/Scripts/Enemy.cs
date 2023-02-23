@@ -5,6 +5,8 @@ public class Enemy : MonoBehaviour
 {
     public Transform target;
     public float speed = 5;
+    public int damage = 10;
+    public Health health;
     
     private void Start()
     {
@@ -20,7 +22,16 @@ public class Enemy : MonoBehaviour
             target.position,
             speed * Time.deltaTime
             );
-        
-        
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print("xD");
+        if (collision.gameObject.CompareTag("Crystal"))
+        {
+            collision.gameObject.GetComponent<Health>().Damage(damage);
+            health.Die();
+        }
     }
 }

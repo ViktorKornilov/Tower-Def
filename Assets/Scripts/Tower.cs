@@ -16,6 +16,7 @@ public class Tower : MonoBehaviour
     public Bullet bulletPrefab;
     public float shootInterval = 10f;
     private float nextShootTime;
+    public int damage = 30;
     
     private void Start()
     {
@@ -40,6 +41,7 @@ public class Tower : MonoBehaviour
 
         var bullet = Instantiate(bulletPrefab, shootPoint.position, shootPoint.rotation);
         bullet.target = target;
+        bullet.damage = damage;
     }
     
 
