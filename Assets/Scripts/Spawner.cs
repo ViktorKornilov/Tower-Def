@@ -30,9 +30,9 @@ public class Spawner : MonoBehaviour
         Instantiate(prefab, transform.position, Quaternion.identity);
     }
 
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position,1f);
-    }
+    }*/
 }

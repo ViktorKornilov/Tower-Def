@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -7,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float speed = 5;
     public int damage = 10;
     public Health health;
+    public NavMeshAgent agent;
     
     private void Start()
     {
@@ -16,14 +18,17 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         if (target == null) return;
-        
-        transform.LookAt(target);
-        
-        transform.position = Vector3.MoveTowards(
-            transform.position,
-            target.position,
-            speed * Time.deltaTime
-            );
+
+        agent.destination = target.position;
+        agent.speed = speed;
+
+        // transform.LookAt(target);
+        //
+        // transform.position = Vector3.MoveTowards(
+        //     transform.position,
+        //     target.position,
+        //     speed * Time.deltaTime
+        //     );
     }
 
 
