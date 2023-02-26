@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     {
         if (target == null) return;
         
+        transform.LookAt(target);
+        
         transform.position = Vector3.MoveTowards(
             transform.position,
             target.position,
