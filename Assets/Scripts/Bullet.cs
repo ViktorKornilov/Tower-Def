@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     public float speed = 10;
     public Transform target;
     public int damage = 30;
+    public Tower owner;
 
     private void Update()
     {
@@ -21,6 +22,7 @@ public class Bullet : MonoBehaviour
         {
             var health = collision.gameObject.GetComponent<Health>();
             health.Damage(damage);
+            if (health.Hp <= 0) owner.BulletKilled(this);
             
             Die();
         }
@@ -28,6 +30,7 @@ public class Bullet : MonoBehaviour
 
     void Die()
     {
+        transform.DetachChildren();
         Destroy(gameObject);
     }
 }

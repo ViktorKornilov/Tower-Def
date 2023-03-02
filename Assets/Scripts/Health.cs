@@ -5,6 +5,8 @@ public class Health : MonoBehaviour
     public int maxHP = 100;
     [SerializeField]private int hp;
 
+    public int Hp => hp;
+
     public bool autoDestroy = true;
 
     public GameObject damageEffect;
