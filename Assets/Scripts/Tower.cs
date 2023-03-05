@@ -34,8 +34,15 @@ public class Tower : MonoBehaviour
     {
         float closestDistance = float.MaxValue;
 
+        List<Transform> invalidTargets = new();
         foreach (var availableTarget in availableTargets)
         {
+            if (availableTarget)
+            {
+                invalidTargets.Add(availableTarget);
+                continue;
+            }
+            
             float distance = Vector3.Distance(transform.position, availableTarget.position);
             if (distance < closestDistance)
             {
@@ -43,20 +50,39 @@ public class Tower : MonoBehaviour
                 target = availableTarget;
             }
         }
+
+        foreach (var t in invalidTargets)
+        {
+            availableTargets.Remove(t);
+        }
     }
 
     private void Update()
     {
-        if (availableTargets.Count <= 0) return;
         if (target == null)
         {
-            if (targetMode == TowerTargetMode.Closest) FindClosest();
-            if (targetMode == TowerTargetMode.First) target = availableTargets[0];
-            if (targetMode == TowerTargetMode.Last) target = availableTargets[^1];
+            SelectTarget();
         }
-        
+
         if (Time.time > nextShootTime) Shoot();
     }
+
+    void SelectTarget()
+    {
+        if (availableTargets.Count <= 0) return;
+        
+        if (targetMode == TowerTargetMode.Closest) FindClosest();
+        if (targetMode == TowerTargetMode.First) target = availableTargets[0];
+        if (targetMode == TowerTargetMode.Last) target = availableTargets[^1];
+        
+        
+        if (!target)
+        {
+            availableTargets.Remove(target);
+            SelectTarget();
+        }
+    }
+    
 
     void Shoot()
     {
@@ -67,7 +93,7 @@ public class Tower : MonoBehaviour
         bullet.damage = damage;
         bullet.owner = this;
         
-       // Audio.Play(shootSound);
+       // Audio.Play(shootSoundhat );
     }
 
     public void BulletKilled(Bullet bullet)

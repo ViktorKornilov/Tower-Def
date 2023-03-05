@@ -14,5 +14,10 @@ public class CameraSystem : MonoBehaviour
         };
 
         transform.position += input * speed * Time.deltaTime;
+        
+        //Screen.width
+        // Input.mousePosition
+        
+        
     }
 }
