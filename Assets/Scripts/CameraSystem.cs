@@ -19,5 +19,13 @@ public class CameraSystem : MonoBehaviour
         // Input.mousePosition
         
         
+        // scrollwheel ir transform forward
+        // min max apribojimai
+        // smooth
+        
+        // tower place preview 
+        // red 
+        
+        
     }
 }

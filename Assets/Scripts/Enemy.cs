@@ -14,6 +14,18 @@ public class Enemy : MonoBehaviour
     {
         if (target == null) target = GameObject.FindGameObjectWithTag("Crystal").transform;
     }
+    
+
+    private void OnEnable()
+    {
+        Spawner.enemies.Add(this);
+    }
+
+    private void OnDisable()
+    {
+        Spawner.enemies.Remove(this);
+    }
+    
 
     private void Update()
     {
