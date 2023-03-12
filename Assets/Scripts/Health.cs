@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Health : MonoBehaviour
 
     public GameObject damageEffect;
     public GameObject deathEffect;
+
+    public UnityEvent onDeath;
 
     private void Start()
     {
@@ -29,6 +32,7 @@ public class Health : MonoBehaviour
     public void Die()
     {
         if(deathEffect != null)Instantiate(deathEffect, transform.position, Quaternion.identity);
+        onDeath.Invoke();
         if(autoDestroy)Destroy(gameObject);
     }
 }

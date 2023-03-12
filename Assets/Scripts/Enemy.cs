@@ -9,10 +9,12 @@ public class Enemy : MonoBehaviour
     public int damage = 10;
     public Health health;
     public NavMeshAgent agent;
+    public int goldValue = 10;
     
     private void Start()
     {
         if (target == null) target = GameObject.FindGameObjectWithTag("Crystal").transform;
+        health.onDeath.AddListener(()=> GameManager.instance.gold+=goldValue);
     }
     
 
@@ -33,14 +35,6 @@ public class Enemy : MonoBehaviour
 
         agent.destination = target.position;
         agent.speed = speed;
-
-        // transform.LookAt(target);
-        //
-        // transform.position = Vector3.MoveTowards(
-        //     transform.position,
-        //     target.position,
-        //     speed * Time.deltaTime
-        //     );
     }
 
 
