@@ -1327,8 +1327,8 @@ MonoBehaviour:
   towerData: {fileID: 11400000, guid: 1e77394c39426dd4ea6cf62149b19823, type: 2}
   mf: {fileID: 652804138}
   mr: {fileID: 652804139}
-  legitMaterial: {fileID: 2100000, guid: 1731d5f44ed74954299c7dfa2077dac1, type: 2}
-  invalidMaterial: {fileID: 2100000, guid: 61eab119bdfa2834b804c2ab13147803, type: 2}
+  legitMaterial: {fileID: 2100000, guid: 7f8036b01d373cf47924d1e1234a4b3a, type: 2}
+  invalidMaterial: {fileID: 2100000, guid: 9d9a134fca1ea7c4b88f7bf1f8b86441, type: 2}
 --- !u!1001 &699766722
 PrefabInstance:
   m_ObjectHideFlags: 0
